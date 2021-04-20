@@ -5,6 +5,11 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import {TsconfigPathsPlugin} from "tsconfig-paths-webpack-plugin";
 
 const webpackConfig = (env): Configuration => ({
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 9000
+      },
     entry: "./src/index.tsx",
     ...(env.production || !env.development ? {} : {devtool: "eval-source-map"}),
     resolve: {
